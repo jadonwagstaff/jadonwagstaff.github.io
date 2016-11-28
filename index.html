@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="public/css/style.css"/>
     <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
 	<script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
 
 	<script type="text/javascript" src="bower_components/d3/d3.js"></script>
@@ -31,10 +32,12 @@
 			<svg id = "key" width = "685" height = "50"></svg>
 			<svg id = "filters" class = "container" y = "50" x = "45" width = "595" height = "30"></svg>
 		</svg>
-		<div class = "views padded">
-			<input type = "text" Value = "Type in Country" style = "width:148px">
-			<button type="button">Search</button>
-			<ul id = "countryList" class = "countryList"></ul>
+		<div class = "views" width = "250px">
+			<!-- the old version
+			<input id = "search" type = "text" Value = "Type in Country">
+			<button id = "searchB" type="button">Search</button> -->
+			<input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for Countries.">
+			<ul id = "countryList" class = "countryList container"></ul>
 		</div>
 		<div class = "padded">
 			<svg id = "map" width = "685" height = "350"></svg>
@@ -47,5 +50,6 @@
 <script type="application/javascript" src="public/js/list.js"></script>
 <script type="application/javascript" src="public/js/map.js"></script>
 <script type="application/javascript" src="public/js/graphs.js"></script>
+<script type="application/javascript" src="public/js/stat.js"></script>
 </body>
 </html>
