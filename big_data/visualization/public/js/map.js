@@ -47,7 +47,7 @@ function drawMap(world) {
         .projection(projection);
 
 
-    d3.json("data/world.json", function(json) {
+    d3.json("visualization/data/world.json", function(json) {
 
         svg.selectAll("path")
             .data(topojson.feature(json, json.objects.countries).features)
