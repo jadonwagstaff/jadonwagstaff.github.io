@@ -56,6 +56,7 @@ Graphs.prototype.init = function(){
 
 Graphs.prototype.update = function(countryCode){
     var self = this;
+    self.rowSize = Math.min(Math.floor((window.innerWidth - 100)/self.graphSize), Math.ceil(1600/self.graphSize))
 
     // find selected country code g elements
     var selected = self.g.filter(function(d){
@@ -185,7 +186,6 @@ Graphs.prototype.update = function(countryCode){
         });
         
     
-	self.rowSize = Math.min(Math.floor((window.innerWidth - 100)/self.graphSize), Math.ceil(1600/self.graphSize))
     // make svg bigger
     self.maxHeight = Math.ceil(1 + currentGraphs.data().length/self.rowSize) * self.gHeight
     self.svg
