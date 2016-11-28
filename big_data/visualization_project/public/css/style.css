@@ -1,0 +1,153 @@
+/* title properties */
+.title{
+    text-align: center;
+}
+h1{
+	color: #db2525;
+}
+
+/* div properties */
+.views{
+	display:inline-block;
+	float: left;
+    text-align: left;
+    overflow:auto;
+}
+
+#search {
+    width: 194px; /* Full-width */
+    font-size: 14px; /* Increase font-size */
+    padding: 8px 8px 8px 8px; /* Add some padding */
+    border: 2px solid #999999; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+.padded{
+    padding:2px;
+}
+.container{
+    border:2px solid #999999;
+}
+
+/*key properties*/
+.keyText{
+    text-anchor:start;
+    font-size: 14px;
+    stroke-width: 0.1px;
+    font-family: "times new roman";
+}
+.buttonText{
+    text-anchor:start;
+    font-size: 14px;
+    font-family: "times new roman";
+}
+.selectedButton{
+    fill:#dbe4f0;
+    opacity: .3;
+    stroke:#708090;
+}
+.unselectedButton{
+    fill:white;
+    opacity:0;
+}
+.axis{
+    font-size:12px;
+    text-anchor:end;
+    font-family: "times new roman";
+}
+.sort{
+    fill:white;
+    opacity:0;
+}
+.sortSelect{
+    fill:#dbe4f0;
+    opacity:.5;
+}
+line{
+    stroke: #000000;
+}
+
+/* chart properties */
+.highlight{
+    fill:none;
+    stroke: #708090;
+}
+.division{
+    fill:white;
+}
+.EX, .EW, .CR, .EN, .VU, .NT, .LC, .DD, .highlight{
+    pointer-events: none;
+}
+.chartTip {
+    width: 120px;
+    border-style: groove;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    pointer-events: none;
+    font-family: "times new roman";
+}
+
+/* map properties */
+.countries {
+    stroke: #999999;
+    fill: #d9d9d9;
+}
+.selectedCountries {
+    stroke: #999999;
+    fill: #a3c2db;
+}
+
+/* list properties */
+.listTitle {
+    font-weight: bold;
+}
+.selectedListItem {
+    background: #dae7f1;
+}
+.countryList{
+    list-style:none;
+    font-size: 14px;
+    max-height:328px;
+    width: 210px;
+    margin:0;
+    overflow-y: scroll;
+    padding:0;
+    font-family: "times new roman";
+}
+
+/* graph properties */
+.graphTip {
+    border-style: groove;
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    pointer-events: none;
+}
+.border{
+    fill: #edf3f8;
+    stroke: #708090;
+}
+.graphText{
+    fill: #708090;
+    text-anchor:middle;
+    font-size: 10pt;
+    pointer-events: none;
+    font-family: "times new roman";
+}
+.graphTitle{
+    text-anchor:middle;
+    font-size: 14pt;
+    pointer-events: none;
+    font-family: "times new roman";
+}
+.graphLine{
+    stroke: #d9d9d9;
+    pointer-events: none;
+}
+.graphPath{
+    stroke: #811818;
+    fill: #da3e3e;
+    opacity: .8;
+    pointer-events: none;
+}
