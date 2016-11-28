@@ -3,7 +3,7 @@ function Chart(data){
 	var self = this;
 	self.data = data;
 
-	self.labelHeight = 55;
+	self.labelHeight = 60;
 	self.barWidth = 5;
 	self.margin = 4;
 	self.barSpace = 1;
@@ -17,7 +17,6 @@ function Chart(data){
 	self.svg = d3.select("#chart");
 
 	self.svgHeight = self.svg.attr("height") - self.labelHeight
-
 
 	self.scale();
 	self.drawKey();
@@ -54,18 +53,24 @@ Chart.prototype.scale = function(){
 Chart.prototype.init = function(){
 
 	var self = this;
-
-
 	var percentage = false;
+	
+	// resize div based on windo size	
+	var resize = Math.min(window.innerWidth - 100, 1700)
+	document.getElementById("chartDiv").setAttribute("style", "width:"+ resize +"px");
+	window.onresize = function(){
+			resize = Math.min(window.innerWidth - 100, 1700)
+			document.getElementById("chartDiv").setAttribute("style", "width:"+ resize +"px");
+		}
 
 	//creating tool tip functionality
 	var tip = d3.tip().attr("class", "chartTip")
 		.direction(function (){
-			if (d3.event.clientX > 1400){ return 'w'}
+			if (d3.event.clientX > Math.min(window.innerWidth - 300, 1400)){ return 'w'}
 			return 'e'
 		})
 		.offset(function(){
-			if (d3.event.clientX > 1400){ return [-100,-30]}
+			if (d3.event.clientX > Math.min(window.innerWidth - 300, 1400)){ return [-100,-30]}
 			return [-100,30];
 		})
 		.html(function(d){

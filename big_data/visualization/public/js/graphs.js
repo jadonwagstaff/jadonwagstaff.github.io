@@ -185,11 +185,9 @@ Graphs.prototype.update = function(countryCode){
         });
 
     // make svg bigger
-    if (self.maxHeight < Math.ceil(2 + currentGraphs.data().length/self.rowSize) * self.graphSize){
-        self.maxHeight = Math.ceil(2 + currentGraphs.data().length/self.rowSize) * self.graphSize
-        self.svg
-            .attr("height", self.maxHeight)
-    }
+    self.maxHeight = Math.ceil(1 + currentGraphs.data().length/self.rowSize) * self.graphSize
+    self.svg
+        .attr("height", self.maxHeight)
     if (self.maxWidth < self.rowSize * self.gHeight){
         self.maxWidth = self.rowSize * self.gHeight;
         self.svg
