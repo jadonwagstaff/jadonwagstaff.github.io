@@ -183,15 +183,15 @@ Graphs.prototype.update = function(countryCode){
             var row = i%self.rowSize;
             return "translate("+ (row * self.graphSize) +","+ (column * self.gHeight) + ")";
         });
-
+        
+    
+	self.rowSize = Math.min(Math.floor((window.innerWidth - 100)/self.graphSize), Math.ceil(1600/self.graphSize))
     // make svg bigger
-    self.maxHeight = Math.ceil(1 + currentGraphs.data().length/self.rowSize) * self.graphSize
+    self.maxHeight = Math.ceil(1 + currentGraphs.data().length/self.rowSize) * self.gHeight
     self.svg
         .attr("height", self.maxHeight)
-    if (self.maxWidth < self.rowSize * self.gHeight){
-        self.maxWidth = self.rowSize * self.gHeight;
-        self.svg
-            .attr("width", self.maxWidth)
-    }
+    self.maxWidth = self.rowSize * self.graphSize;
+    self.svg
+        .attr("width", self.maxWidth)
 
 }
