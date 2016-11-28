@@ -61,7 +61,7 @@ function drawMap(world) {
 }
 
 // load map data and initialize drawing map
-d3.json("data/world.json", function (error, world) {
+d3.json("visualization/data/world.json", function (error, world) {
     if (error) throw error;
     drawMap(world);
 });

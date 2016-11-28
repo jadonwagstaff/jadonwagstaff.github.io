@@ -8,7 +8,7 @@ function loadData() {
 	d3.select("#chart").selectAll("*").remove();
 
 
-    d3.csv("data/data.csv", function (error, data) {
+    d3.csv("visualization/data/data.csv", function (error, data) {
 
 
         //create objects
