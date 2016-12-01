@@ -1,6 +1,6 @@
 //loads and initializes data
 
-loadData("summary");
+loadData();
 
 function loadData() {
     
@@ -13,10 +13,11 @@ function loadData() {
 
         //create objects
         var map = new Map(data);
+		var stat = new Stat(data);
         var chart = new Chart(data);
         var graphs = new Graphs(data);
-        var list = new List(map, chart, graphs, data);
-	var stat = new Stat(data);
+        var list = new List(map, chart, graphs, stat, data);
+		
     });
 
 }

@@ -1,14 +1,31 @@
 /* html properties */
 .title{
-    margin-left: 100px;
+    margin: 60px;
 }
 h1{
 	color: #db2525;
 }
+h3{
+    font-size: 20px;
+    margin-top:5px;
+}
+h5{
+    margin-top:6px;
+    margin-bottom:6px;
+}
 .description{
-	margin-left:100px;
+	margin-left:60px;
 	margin-bottom:300px;
 	max-width:800px;
+}
+body{
+    padding-left: 40px;
+}
+caption{
+    color:black;
+    font-size:18px;
+    padding:0px;
+    font-weight:bold;
 }
 
 /* div properties */
@@ -17,8 +34,17 @@ h1{
 	float: left;
     text-align: left;
     overflow:auto;
-    width: auto;
 }
+
+.viewsD{
+	display:inline-block;
+    padding-bottom:40px;
+	float: left;
+    text-align: left;
+	list-style:none;
+
+}
+
 
 #search {
     width: 194px; /* Full-width */
@@ -26,6 +52,16 @@ h1{
     padding: 8px 8px 8px 8px; /* Add some padding */
     border: 2px solid #999999; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
+}
+
+#details {
+	width: 685px;
+	height: 270px;
+    font-size: 14px;
+    margin:0;
+    overflow-x: hidden;
+    overflow-y:auto;
+    padding:0;
 }
 
 .padded{
@@ -42,19 +78,30 @@ h1{
     stroke-width: 0.1px;
     font-family: "times new roman";
 }
-.buttonText{
-    text-anchor:start;
-    font-size: 14px;
-    font-family: "times new roman";
-}
-.selectedButton{
+.selectedKey{
     fill:#dbe4f0;
     opacity: .3;
     stroke:#708090;
 }
-.unselectedButton{
+.unselectedKey{
     fill:white;
     opacity:0;
+}
+.buttonText{
+    fill:white;
+    text-anchor:start;
+    font-size: 14px;
+    font-family: "times new roman";
+    pointer-events: none;
+}
+/*"#5a91bf", "#a3c2db", "#f7d4d4", "#e77e7e", "#d62929", "#8c8c8c", "#666666"*/
+.selectedButton{
+    fill:#5a91bf;
+    stroke:#24435c;
+}
+.unselectedButton{
+    fill:#a3c2db;
+    stroke:#4078a5;
 }
 .axis{
     font-size:12px;
@@ -85,7 +132,7 @@ line{
     pointer-events: none;
 }
 .chartTip {
-    width: 120px;
+    max-width: 160px;
     border-style: groove;
     padding: 10px;
     background: #FFFFFF;
@@ -97,11 +144,19 @@ line{
 /* map properties */
 .countries {
     stroke: #999999;
-    fill: #d9d9d9;
+    fill: #cccccc;
 }
 .selectedCountries {
     stroke: #999999;
-    fill: #a3c2db;
+    fill: #91b6d4;
+}
+.worldTip {
+    max-width: 120px;
+    border-style: groove;
+    padding: 2px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    pointer-events: none;
 }
 
 /* list properties */
@@ -114,7 +169,7 @@ line{
 .countryList{
     list-style:none;
     font-size: 14px;
-    max-height:328px;
+    max-height:333px;
     width: 210px;
     margin:0;
     overflow-y: scroll;
@@ -123,6 +178,12 @@ line{
 }
 
 /* graph properties */
+#graphsTitle{
+    text-anchor:left;
+    font-size: 20px;
+    pointer-events: none;
+    font-family: "times new roman";
+}
 .graphTip {
     border-style: groove;
     padding: 10px;
@@ -142,7 +203,7 @@ line{
     font-family: "times new roman";
 }
 .graphTitle{
-    text-anchor:middle;
+    text-align: center;
     font-size: 14pt;
     pointer-events: none;
     font-family: "times new roman";

@@ -2,8 +2,8 @@
 function Chart(data){
 	var self = this;
 	self.data = data;
-
-	self.labelHeight = 60;
+	
+	self.labelHeight = 55;
 	self.barWidth = 5;
 	self.margin = 4;
 	self.barSpace = 1;
@@ -55,51 +55,68 @@ Chart.prototype.init = function(){
 	var self = this;
 	var percentage = false;
 	
-	// resize div based on windo size	
-	var resize = Math.min(window.innerWidth - 100, 1700)
+	// resize div based on window size
+	var resize = Math.min(window.innerWidth - 150, 1700)
 	document.getElementById("chartDiv").setAttribute("style", "width:"+ resize +"px");
 	window.onresize = function(){
-			resize = Math.min(window.innerWidth - 100, 1700)
+			resize = Math.min(window.innerWidth - 150, 1700)
 			document.getElementById("chartDiv").setAttribute("style", "width:"+ resize +"px");
 		}
 
 	//creating tool tip functionality
 	var tip = d3.tip().attr("class", "chartTip")
 		.direction(function (){
-			if (d3.event.clientX > Math.min(window.innerWidth - 300, 1400)){ return 'w'}
+			if (d3.event.clientX > 1400){ return 'w'}
 			return 'e'
 		})
 		.offset(function(){
-			if (d3.event.clientX > Math.min(window.innerWidth - 300, 1400)){ return [-100,-30]}
+			if (d3.event.clientX > 1400){ return [-100,-30]}
 			return [-100,30];
 		})
 		.html(function(d){
 			var category = ["EX", "EW", "CR", "EN", "VU", "NT", "LC", "DD"];
 			var tooltip_data = [];
+			var extinct, redList, unthreatened;
 
 			tooltip_data[0] = d.Country;
 
 			if (self.percentage == true){
-
 				for (var j = 0; j < category.length; j++){
 					var number = (d[self.set+category[j]] / d[self.set+"SP"]) * 100;
 					number = +number.toFixed(1);
 					tooltip_data[j+1] = number + "%";
 				}
+				number = ((parseFloat(d[self.set+category[0]]) + parseFloat(d[self.set+category[1]])) / d[self.set+"SP"]) * 100;
+				number = +number.toFixed(1);
+				extinct = number + "%";
+				number = ((parseFloat(d[self.set+category[2]]) + parseFloat(d[self.set+category[3]]) + parseFloat(d[self.set+category[4]])) / d[self.set+"SP"]) * 100;
+				number = +number.toFixed(1);
+				redList = number + "%";
+				number = ((parseFloat(d[self.set+category[5]]) + parseFloat(d[self.set+category[6]])) / d[self.set+"SP"]) * 100;
+				number = +number.toFixed(1);
+				unthreatened = number + "%";
 			}
 			else{
 				for (var j = 0; j < category.length; j++){
 					tooltip_data[j+1] = d[self.set+category[j]];
 				}
+				extinct = parseInt(d[self.set+category[0]]) + parseInt(d[self.set+category[1]]);
+				redList = parseInt(d[self.set+category[2]]) + parseInt(d[self.set+category[3]]) + parseInt(d[self.set+category[4]]);
+				unthreatened = parseInt(d[self.set+category[5]]) + parseInt(d[self.set+category[6]]);
 			}
 
 			var c = ["#262626", "#666666", "#b22222", "#de5454", "#f3bfbf", "#a3c2db", "#4682b4", "#A59688"];
 
-			var text = "<span style = 'font:12pt'>" + tooltip_data[0]
+			var text = "<span style = 'font:12pt'><b>" + tooltip_data[0] + "</b><br><table>";
 			for (var j = 1; j < tooltip_data.length; j++){
-				text += "<br><span style = 'color:" + c[j-1] + "'>" + tooltip_data[j] + "</span>"
+				text += "<tr><td><span style = 'color:" + c[j-1] + "'>" + tooltip_data[j] + "</span></td>";
+				if(j == 1) {text += "<td>Extinct: "+ extinct +"</td>";}
+				else if(j == 3) {text += "<td>Red List: "+ redList +"</td>";}
+				else if(j == 6) {text += "<td>Unthreatened:</td>";}
+				else if(j == 7) {text += "<td style = 'text-align:right'>"+ unthreatened +"</td>";}
+				text += "</tr>"
 			}
-			text += "</span>"
+			text += "</table></span>"
 			return text;
 		})
 
@@ -545,9 +562,7 @@ Chart.prototype.dataChange = function (file) {
 		amphibians.attr("class", "unselectedButton");
 
 		self.set = "T_";
-		self.svg.transition()
-			.duration(3000)
-			.attr("width", 1600)
+		self.svg.attr("width", 1600)
 	}
 	if (file == "mammals" && mammals.attr("class") == "unselectedButton"){
 		summary.attr("class", "unselectedButton");
@@ -555,9 +570,7 @@ Chart.prototype.dataChange = function (file) {
 		amphibians.attr("class", "unselectedButton");
 
 		self.set = "M_";
-		self.svg.transition()
-			.duration(3000)
-			.attr("width", 1550)
+		self.svg.attr("width", 1550)
 	}
 	if (file == "amphibians" && amphibians.attr("class") == "unselectedButton"){
 		summary.attr("class", "unselectedButton");
@@ -565,9 +578,7 @@ Chart.prototype.dataChange = function (file) {
 		amphibians.attr("class", "selectedButton");
 
 		self.set = "A_";
-		self.svg.transition()
-			.duration(3000)
-			.attr("width", 1250)
+		self.svg.attr("width", 1250)
 	}
 
 
@@ -1065,7 +1076,7 @@ Chart.prototype.drawKey = function() {
 
 	var key = d3.select("#key");
 	key.selectAll("*").remove();
-	var c = ["#262626", "#666666", "#b22222", "#de5454", "#f3bfbf", "#a3c2db", "#4682b4", "#A59688"];
+	var c = ["#666666", "#8c8c8c", "#d62929", "#e77e7e", "#f7d4d4", "#a3c2db", "#5a91bf", "#A59688"];
 
 	key.append("line")
 		.attr("x1", 0)
@@ -1176,69 +1187,69 @@ Chart.prototype.drawKey = function() {
 
 	// method for updating data to reflect sorting values
 	key.append("rect")
-		.attr("class", "unselectedButton")
+		.attr("class", "unselectedKey")
 		.attr("x", 0)
 		.attr("y", 0)
 		.attr("width", (key.attr("width")*2)/c.length)
 		.attr("height", key.attr("height") - axisHeight)
 		.on("mouseover", function(){
 			d3.select(this).style("cursor", "pointer");
-			d3.select(this).attr("class", "selectedButton");
+			d3.select(this).attr("class", "selectedKey");
 		})
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
-			d3.select(this).attr("class", "unselectedButton");
+			d3.select(this).attr("class", "unselectedKey");
 		})
 		.on("click", function(){
 			self.sort("extinct");
 		});
 	key.append("rect")
-		.attr("class", "unselectedButton")
+		.attr("class", "unselectedKey")
 		.attr("x", (key.attr("width")*2)/c.length)
 		.attr("y", 0)
 		.attr("width", (key.attr("width")*3)/c.length)
 		.attr("height", key.attr("height") - axisHeight)
 		.on("mouseover", function(){
 			d3.select(this).style("cursor", "pointer");
-			d3.select(this).attr("class", "selectedButton");
+			d3.select(this).attr("class", "selectedKey");
 		})
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
-			d3.select(this).attr("class", "unselectedButton");
+			d3.select(this).attr("class", "unselectedKey");
 		})
 		.on("click", function(){
 			self.sort("redList");
 		});
 	key.append("rect")
-		.attr("class", "unselectedButton")
+		.attr("class", "unselectedKey")
 		.attr("x", (key.attr("width")*5)/c.length)
 		.attr("y", 0)
 		.attr("width", (key.attr("width")*2)/c.length)
 		.attr("height", key.attr("height") - axisHeight)
 		.on("mouseover", function(){
 			d3.select(this).style("cursor", "pointer");
-			d3.select(this).attr("class", "selectedButton");
+			d3.select(this).attr("class", "selectedKey");
 		})
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default")
-			d3.select(this).attr("class", "unselectedButton");
+			d3.select(this).attr("class", "unselectedKey");
 		})
 		.on("click", function(){
 			self.sort("unthreatened");
 		});
 	key.append("rect")
-		.attr("class", "unselectedButton")
+		.attr("class", "unselectedKey")
 		.attr("x", (key.attr("width")*7)/c.length)
 		.attr("y", 0)
 		.attr("width", (key.attr("width"))/c.length)
 		.attr("height", key.attr("height") - axisHeight)
 		.on("mouseover", function(){
 			d3.select(this).style("cursor", "pointer");
-			d3.select(this).attr("class", "selectedButton");
+			d3.select(this).attr("class", "selectedKey");
 		})
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
-			d3.select(this).attr("class", "unselectedButton");
+			d3.select(this).attr("class", "unselectedKey");
 		})
 		.on("click", function(){
 			self.sort("dataDeficient");
@@ -1256,28 +1267,33 @@ Chart.prototype.drawFilters = function(file){
 	var axisHeight = 5;
 	var boxHeight = 20;
 	var margin = 5;
-	var filterLength = 6;
-	var filterText = ["Summary", "Mammals", "Amphibians", "Percentage", "Compare", "Regions"]
+	var filterLength = 7;
+	var filterText = ["Summary", "Mammals", "Amphibians", "Percentage", "Regions", "Details", "Clear"]
 
 	var filters = d3.select("#filters");
 
 	filters.selectAll("*").remove();
 
 	filters.append("line")
-		.attr("x1", (filters.attr("width") * 3) / filterLength + 9)
+		.attr("x1", (filters.attr("width") * 3) / filterLength + 18)
 		.attr("y1", axisHeight)
 		.attr("y2", filters.attr("height")  - axisHeight)
-		.attr("x2", (filters.attr("width") * 3) / filterLength + 9)
+		.attr("x2", (filters.attr("width") * 3) / filterLength + 18)
 	filters.append("line")
-		.attr("x1", (filters.attr("width") * 4) / filterLength + 6)
+		.attr("x1", (filters.attr("width") * 4) / filterLength + 23)
 		.attr("y1", axisHeight)
 		.attr("y2", filters.attr("height")  - axisHeight)
-		.attr("x2", (filters.attr("width") * 4) / filterLength + 6)
+		.attr("x2", (filters.attr("width") * 4) / filterLength + 23)
 	filters.append("line")
-		.attr("x1", (filters.attr("width") * 5) / filterLength + 1)
+		.attr("x1", (filters.attr("width") * 5) / filterLength + 16)
 		.attr("y1", axisHeight)
 		.attr("y2", filters.attr("height")  - axisHeight)
-		.attr("x2", (filters.attr("width") * 5) / filterLength + 1)
+		.attr("x2", (filters.attr("width") * 5) / filterLength + 16)
+	filters.append("line")
+		.attr("x1", (filters.attr("width") * 6) / filterLength + 2)
+		.attr("y1", axisHeight)
+		.attr("y2", filters.attr("height")  - axisHeight)
+		.attr("x2", (filters.attr("width") * 6) / filterLength + 2)
 
 	filters.append("line")
 		.attr("x1", 0)
@@ -1286,19 +1302,6 @@ Chart.prototype.drawFilters = function(file){
 		.attr("x2", filters.attr("width"));
 
 
-	var text = filters.selectAll("text").data(filterText);
-
-
-	text.enter()
-		.append("text")
-		.attr("class", "buttonText")
-		.attr("x", function(d, i){
-			return (filters.attr("width")*i)/filterLength + textWidth;
-		})
-		.attr("y", textHeight)
-		.text(function(d){
-			return d;
-		});
 
 	filters.append("rect")
 		.attr("id", "summary")
@@ -1312,7 +1315,9 @@ Chart.prototype.drawFilters = function(file){
 		})
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
-		});
+		})
+		.attr("rx", 4)
+		.attr("ry", 4);
 	filters.append("rect")
 		.attr("id", "mammals")
 		.attr("class", "unselectedButton")
@@ -1326,6 +1331,8 @@ Chart.prototype.drawFilters = function(file){
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
 		})
+		.attr("rx", 4)
+		.attr("ry", 4);
 	filters.append("rect")
 		.attr("id", "amphibians")
 		.attr("class", "unselectedButton")
@@ -1339,10 +1346,12 @@ Chart.prototype.drawFilters = function(file){
 		.on("mouseout", function(){
 			d3.select(this).style("cursor", "default");
 		})
+		.attr("rx", 4)
+		.attr("ry", 4);
 	filters.append("rect")
 		.attr("id", "percentage")
 		.attr("class", "unselectedButton")
-		.attr("x", (filters.attr("width")*3)/filterLength + textWidth - margin)
+		.attr("x", (filters.attr("width")*3)/filterLength + textWidth - margin + 15)
 		.attr("y", textHeight - boxHeight/2 - axisHeight)
 		.attr("width", 71)
 		.attr("height", boxHeight)
@@ -1354,27 +1363,13 @@ Chart.prototype.drawFilters = function(file){
 		})
 		.on("click", function(){
 			self.percentChange();
-		});
-	filters.append("rect")
-		.attr("id", "compare")
-		.attr("class", "unselectedButton")
-		.attr("x", (filters.attr("width")*4)/filterLength + textWidth - margin)
-		.attr("y", textHeight - boxHeight/2 - axisHeight)
-		.attr("width", 62)
-		.attr("height", boxHeight)
-		.on("mouseover", function(){
-			d3.select(this).style("cursor", "pointer");
 		})
-		.on("mouseout", function(){
-			d3.select(this).style("cursor", "default");
-		})
-		.on("click", function(){
-			//self.compareChange();
-		});
+		.attr("rx", 4)
+		.attr("ry", 4);
 	filters.append("rect")
 		.attr("id", "regions")
 		.attr("class", "selectedButton")
-		.attr("x", (filters.attr("width")*5)/filterLength + textWidth - margin)
+		.attr("x", (filters.attr("width")*4)/filterLength + textWidth - margin + 20)
 		.attr("y", textHeight - boxHeight/2 - axisHeight)
 		.attr("width", 58)
 		.attr("height", boxHeight)
@@ -1386,10 +1381,61 @@ Chart.prototype.drawFilters = function(file){
 		})
 		.on("click", function(){
 			self.regionChange()
-		});
+		})
+		.attr("rx", 4)
+		.attr("ry", 4);
+	filters.append("rect")
+		.attr("id", "compare")
+		.attr("class", "unselectedButton")
+		.attr("x", (filters.attr("width")*5)/filterLength + textWidth - margin + 12)
+		.attr("y", textHeight - boxHeight/2 - axisHeight)
+		.attr("width", 50)
+		.attr("height", boxHeight)
+		.on("mouseover", function(){
+			d3.select(this).style("cursor", "pointer");
+		})
+		.on("mouseout", function(){
+			d3.select(this).style("cursor", "default");
+		})
+		.attr("rx", 4)
+		.attr("ry", 4);
+	filters.append("rect")
+		.attr("id", "clear")
+		.attr("class", "unselectedButton")
+		.attr("x", (filters.attr("width")*6)/filterLength + textWidth - margin)
+		.attr("y", textHeight - boxHeight/2 - axisHeight)
+		.attr("width", 42)
+		.attr("height", boxHeight)
+		.on("mouseover", function(){
+			d3.select(this).style("cursor", "pointer");
+		})
+		.on("mouseout", function(){
+			d3.select(this).style("cursor", "default");
+		})
+		.attr("rx", 4)
+		.attr("ry", 4);
 
 	filters.select("#"+file)
 		.attr("class", "selectedButton");
+
+	var text = filters.selectAll("text").data(filterText);
+
+
+	text.enter()
+		.append("text")
+		.attr("class", "buttonText")
+		.attr("x", function(d, i){
+			var x = (filters.attr("width")*i)/filterLength + textWidth;
+			if (d == "Percentage"){x += 15}
+			if (d == "Regions"){x += 20}
+			if (d == "Details"){x += 12}
+
+			return x;
+		})
+		.attr("y", textHeight)
+		.text(function(d){
+			return d;
+		});
 
 
 }
