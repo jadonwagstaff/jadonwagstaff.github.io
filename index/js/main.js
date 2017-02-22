@@ -25,6 +25,7 @@ nav = nav.selectAll('a')
 			else if( i == 3 ) { return 'life/index.html'; }
 		});
 nav = nav.append('text')
+	.style('fill', 'white')
 	.text(function(d) {
 		return d;
 	})
