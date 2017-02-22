@@ -13,7 +13,7 @@ var title = container.append('text')
 	.text('Jadon Wagstaff')
 	.style('cursor', 'default');
 	
-var nav = container.append('g').attr('class', 'nav');
+var nav = container.append('g');
 nav = nav.selectAll('a')
 		.data(NAV)
 		.enter()
@@ -25,7 +25,7 @@ nav = nav.selectAll('a')
 			else if( i == 3 ) { return 'life/index.html'; }
 		});
 nav = nav.append('text')
-	.style('fill', 'white')
+	.attr('class', 'nav')
 	.text(function(d) {
 		return d;
 	})
