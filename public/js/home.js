@@ -19,10 +19,10 @@ nav = nav.selectAll('a')
 		.enter()
 		.append('a')
 		.attr('href', function(d,i) {
-			if( i == 0 ) { return 'about/index.html'; }
-			else if( i == 1 ) { return 'projects/index.html'; }
-			else if( i == 2 ) { return 'experience/index.html'; }
-			else if( i == 3 ) { return 'life/index.html'; }
+			if( i == 0 ) { return 'about.html'; }
+			else if( i == 1 ) { return 'projects.html'; }
+			else if( i == 2 ) { return 'experience.html'; }
+			else if( i == 3 ) { return 'life.html'; }
 		});
 nav = nav.append('text')
 	.attr('class', 'nav')
