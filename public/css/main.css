@@ -23,6 +23,9 @@
 	padding-right: 20px;
 	text-decoration: none;
 }
+a {
+	text-decoration: none;
+}
 a.navItem {
 	color: inherit;
 	text-decoration: inherit;
@@ -31,7 +34,7 @@ a.navItem {
 a.navItem:hover {
 	color: brown;
 }
-img {
+img.max {
 	width: 600px;
 }
 body {
@@ -51,4 +54,11 @@ h2 {
 	font-weight: 600;
 	padding-top: 20px;
 }
+p.noSpace {
+	line-height: 100%;
+}
+
+
+
+
 
