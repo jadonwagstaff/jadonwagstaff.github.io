@@ -18,7 +18,7 @@ nav = nav.selectAll('a')
 		.data(NAV)
 		.enter()
 		.append('a')
-		.attr('href', function(d,i) {
+		.attr('xlink:href', function(d,i) {
 			if( i == 0 ) { return 'about.html'; }
 			else if( i == 1 ) { return 'projects.html'; }
 			else if( i == 2 ) { return 'experience.html'; }
