@@ -52,10 +52,21 @@ h2 {
 	font-family: 'Slabo 13px', serif;
 	font-size: 13px;
 	font-weight: 600;
-	padding-top: 20px;
+	padding-top: 30px;
+}
+h3 {
+	font-family: 'Slabo 13px', serif;
+	font-size: 13px;
+	font-weight: 300;
+	position: relative;
+	bottom: 15px;
+	z-index: -1;
 }
 p.noSpace {
 	line-height: 100%;
+}
+p {
+	text-align: justify;
 }
 
 
