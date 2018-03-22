@@ -63,10 +63,13 @@ h3 {
 	z-index: -1;
 }
 p.noSpace {
-	line-height: 100%;
+	line-height: 140%;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 p {
 	text-align: justify;
+	line-height: 180%
 }
 
 
