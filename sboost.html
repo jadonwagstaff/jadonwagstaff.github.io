@@ -46,23 +46,19 @@
 
 <h1>Machine Learning R Package <i>sboost</i></h1>
 
-<h3>JADON WAGSTAFF - December 20, 2017</h3>
+<h3>JADON WAGSTAFF - October 29, 2018</h3>
 
 <h2>Overview</h2>
 
-<p>This project has two parts. The first part is the participation in a Kaggle competition as part of a machine learning course at The University of Utah in 2016. The second part is creating an R package called <i>sboost</i>&nbsp that is an implementation of AdaBoost with decision stumps.</p>
-
-<p>For the class Kaggle competition, I implemented six different machine learning algorithms on an android app system call dataset. The training data consisted of 7600 apps with records of number of system calls for 360 different types of system calls. The algorithms implemented were ID3, SVM, tree ensembles, Perceptron, and AdaBoost with decision stumps. I used cross validation to tune hyper-parameters for each.  AdaBoost with decision stumps proved to be a good classifier for this set of data. The competition ended in December of 2016, the results of the competition can be seen <a href="https://inclass.kaggle.com/c/ml-fall2016-android-malware/leaderboard/private"> here</a>, and they are summarized at the bottom of the page.</p>
-
-<p>The package <i>sboost</i> started as an exercise to learn how to integrate C++ with R and to learn how to build R packages. See my <a href="https://github.com/jadonwagstaff/sboost">GitHub <i>sboost</i>&nbsp  repository</a> for a code and installation instructions.</p>
+<p>The package <i>sboost</i> started as an exercise to learn how to integrate C++ with R and to learn how to build R packages. The end result is a fast implementation of Freund and Schapire adaptive boosting (AdaBoost) [2] on decision stumps which was accepted onto the Comprehensive R Archive Network (CRAN). See my <a href="https://github.com/jadonwagstaff/sboost" target="_blank">GitHub <i>sboost</i>&nbsp  repository</a> for source code and installation instructions, or the <a href="https://cran.r-project.org/web/packages/sboost/index.html" target="_blank">CRAN <i>sboost</i> page</a> for package details.</p>
 
 <h2>Decision Stumps</h2>
 
-<p>The <i>sboost</i>&nbsp package uses AdaBoost to combine and improve the performance of weak classifiers called decision stumps. Decision stumps are classifiers that learns to classify a feature vector into one of two outcomes. Prior to running the algorithm, all categorical features are converted to integers, all instances of each feature are sorted in ascending order, and each instance is given equal weight. When finding a decision stump, each feature is analyzed separately.</p>
+<p>The <i>sboost</i>&nbsp package uses AdaBoost to combine and improve the performance of weak classifiers called decision stumps. Decision stumps are classifiers that learns to classify a feature vector into one of two outcomes. Prior to running the algorithm, all categorical features are converted to integers, all instances of each feature are sorted in ascending order, each instance is given equal weight, and outcomes are assigned as either -1 or 1. When finding a decision stump, each feature is analyzed separately.</p>
 
 <p>For categorical features, the categories are separated into one of the two outcomes based on the weighted accuracy of instances within that category. For example, if for instances 1 to 9 a feature is [1, 1, 1, 2, 2, 2, 3, 3, 3] and outcomes are [1, 1, 1, -1, -1, 1, 1, 1, -1], then categories 1 and 3 will be predicted as 1 and category 2 will be predicted as -1. The overall accuracy for this stump will be 7/9 or 78% (assuming equal weight).</p>
 
-<p>For each pair of sequential feature values (a and b) in a numerical feature, the accuracy for a division of the data at the point between the a and b is calculated.</i> Given the example above, if that feature was numeric, the optimal division would be &lt 1.5 predicted as 1 and &gt 1.5 predicted as -1 with an overall accuracy of 6/9 or 67% (assuming an equal weight).
+<p>For each pair of sequential feature values (a and b where a ≠ b) in a numerical feature, the accuracy for a division of the data at the point between the a and b is calculated.</i> Given the example above, if that feature was numeric rather than categorical, the optimal division would be &lt 1.5 predicted as 1 and &gt 1.5 predicted as -1 with an overall accuracy of 6/9 or 67% (assuming an equal weight).
 
 <p>Whichever division of all features produced the greatest accuracy is chosen to be the decision stump for that round. AdaBoost is then implemented on the resulting weak classifier and the process is repeated with updated weights.</p>
 
@@ -70,13 +66,28 @@
 
 <p>AdaBoost requires the weighted error, &#949, of the best stump for a given round (weighted error = 1 - weighted accuracy). The amount of vote, &#945, for that stump in the final outcome is given by &#945&nbsp=&nbsp.5&nbsp*&nbspln((1&nbsp-&nbsp&#949)&nbsp/&nbsp&#949). Each of the weights, &#969, is updated by &#969&nbsp=&nbsp&#969&nbsp*&nbspexp(-&#945) for correct predictions and &#969&nbsp=&nbsp&#969&nbsp*&nbspexp(&#945) for incorrect predictions. This results in weights that are scaled up for incorrect classification and scaled down for correct classification. These weights are used when training the next stump and the process is repeated for a specified number of iterations.</p>
 
+<p>To find a prediction for a given feature vector, the prediction for each stump <i>s<sub>i</sub></i>&nbsp as -1 or 1 is multiplied by the vote <i>v<sub>i</sub></i>&nbsp and all <i>s<sub>i</sub>v<sub>i</sub></i>&nbsp are added together. If this sum is greater than zero, 1 is the final prediction, otherwise -1 is the final prediction.</p>
+
+<p>This type of classifier is non-linear, but the the prediction mechanism for a given feature vector is less of a black-box than other non-linear classifiers. Since each stump is based on only one feature, the influence of each feature on the final prediction can be calculated. This gives the classifier transparancy comparable to a linear classifier with the greater flexibility to fit non-linear data.</p> 
+
 <h2>Results</h2>
 
-<p>Returning to the competition, the following method was employed. Four fold cross validation was used to find the best number of iterations to use. Below are graphs displaying the results of this validation. The F1 scores of the training sets continually increased and the F1 scores on the testing sets remained at a fairly constant 85% with about 1% standard deviation. The classifier was consistently over fit to the training. I expected the error rate of the testing sets to eventually increase as training proceeded, however errors on the testing sets seemed to remain constant after a few hundred iterations. Any classifier made with over a thousand iterations on this algorithm would be a good candidate to submit for the competition.</p>
+<p>This algorithm was employed during participation in a Kaggle competition as part of a machine learning course at The University of Utah in 2016. The competition involved classifying malware from normal android apps [1].</p>
 
+<p>Four fold cross validation was used to find the best number of iterations to use. Below are graphs displaying the results of this validation. The F1 scores of the training sets continually increased and the F1 scores on the testing sets remained at a fairly constant 85% with about 1% standard deviation. The classifier was consistently over fit to the training; however, errors on the testing sets seemed to remain constant after a few hundred iterations. Any classifier made with over a thousand iterations on this algorithm would be a good candidate to submit for the competition.</p>
+
+<p>The classifier resulting from this algorithm outperformed my implementations of ID3, SVM, tree ensembles, and Perceptron. Predictions from the developmental version of sboost were my final submission. The competition ended in December of 2016, the results of the competition can be seen <a href="https://inclass.kaggle.com/c/ml-fall2016-android-malware/leaderboard/private" target="_blank"> here</a>.</p>
+
+<br>
 <img class="max" src="public/images/ml_average.png">
 
+<br><br>
 <img class="max" src="public/images/ml_sd.png">
+
+<h2>References</h2>
+[1] Dimjašević, M., Atzeni, S., Ugrina, I., and Rakamarić, Z. Evaluation of Android Malware Detection Based on System Calls. <i>Proceedings of the International Workshop on Security and Privacy Analytics (IWSPA)</i> (2016)<br>
+[2] Freund, Y., and Schapire, R.E. A decision-theoretic generalization of on-line learning and an application to boosting. <i>Journal of Computer and System Sciences 55</i> (1997), 119-139.
+
 
 </div>
 </body>
