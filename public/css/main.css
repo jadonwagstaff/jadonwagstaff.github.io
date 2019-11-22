@@ -38,24 +38,20 @@ img.max {
 	width: 600px;
 }
 body {
-	font-family: 'Slabo 13px', serif;
 	font-size: 13px;
 	line-height: 200%;
 	padding-bottom: 150px;
 }
 h1 {
-	font-family: 'Slabo 27px', serif;
 	font-size: 27px;
 	font-weight: inherit;
 }
 h2 {
-	font-family: 'Slabo 13px', serif;
 	font-size: 13px;
 	font-weight: 600;
 	padding-top: 30px;
 }
 h3 {
-	font-family: 'Slabo 13px', serif;
 	font-size: 13px;
 	font-weight: 300;
 	position: relative;
@@ -63,7 +59,6 @@ h3 {
 	z-index: -1;
 }
 h3.date {
-	font-family: 'Slabo 13px', serif;
 	font-size: 13px;
 	font-weight: 300;
 	position: relative;

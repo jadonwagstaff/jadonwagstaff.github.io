@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jadon Wagstaff - Projects</title>
+    <link rel="stylesheet" href="../public/css/main.css"/>
+</head>
+
+<body>
+<div id="wrap">
+
+<div id="head">
+	<span>
+		<ul id="nav">
+			<li>
+				<a class="navItem" href="../about.html">
+					ABOUT
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../projects.html">
+					PROJECTS
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../experience.html">
+					EXPERIENCE
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../life.html">
+					LIFE</li>
+				</a>
+			<li>
+		</ul>
+	</span>
+	<span id="symbol">
+		<a class="navItem" href="../index.html">
+			JW
+		</a>
+	</span>
+</div>
+
+<h1>Neonatal Sepsis</h1>
+
+<h3>JADON WAGSTAFF - October 15, 2019</h3>
+
+<h2>Overview</h2>
+
+<p>Neonatal sepsis is a leading cause of mortality and morbidity in the neonatal population. To better understand the occurrence and treatment of neonatal sepsis at the University of Utah Hospital, retrospective data was collected from a 12 year period from 2006 to 2018 for all neonates billed for neonatal sepsis and present at the hospital between 0 and 28 days of life. The results of this investigation is two published abstracts (Wagstaff, Eason, Newman, Sherwin, & Enioutina, 2018; Wagstaff, Newman, Enioutina, 2019b) with poster presentations at the annual meetings of the American College of Clinical Pharmacology (ACCP) in 2018 and 2019, and a journal article in Frontiers of Pharmacology (Wagstaff et al., 2019a).</p>
+
+<h2>Project Beginnings</h2>
+
+<p>Initially, this study was focused on late onset sepsis (sepsis within 3-28 days of birth). Elena Enioutina, MD, PhD has proposed that the number of myeloid derived suppressor cells found in cord blood may correlate with late onset sepsis. With that purpose in mind, data was collected to support future prospective studies. Specifically, she was interested in determining a cutoff for gestational age that will increase the statistical power of the study and keep the number of patients included in the study to a minimum.</p>
+
+<p>After cleaning the data, we tested gestational age as a predictor of late-onset sepsis. Based on a logistic regression model, gestational age is a good predictor of late onset sepsis in terms of sensitivity and specificity (Figure 1 corroborates this point). Since the likelihood of sepsis is so skewed (about 5:1000 sepsis:normal) the precision of the predictor is low. This means that if the cutoff age is 33 weeks, even though 90% of newborns with late-onset sepsis would be captured, only 4% of the newborns less than 33 weeks would be positive for late-onset sepsis.</p>
+
+<img class="max" src="../public/images/sepsis_density.png">
+<center>Figure 1: Probability density plots for late-onset sepsis.</center>
+
+<p>We characterized the treatment, demographics, and causative agents of late onset sepsis within our patient group in an abstract and poster at the ACCP 2018 meeting (Wagstaff et al., 2018). After further analysis and data collection, we presented a second abstract and poster on the subject of empiric treatment of early onset neonatal sepsis at the ACCP 2019 meeting (Wagstaff et al., 2019b). Finally, we refined our findings into a journal article published in Frontiers in Pharmacology (Wagstaff et al., 2019a).
+
+<h2>Findings</h2>
+
+<p>Most neonates treated for sepsis did not have a corresponding positive blood culture result. Only 2.3% of early onset sepsis patients and 20% of late onset patients had positive culture results (Wagstaff et al., 2019a). Empiric treatment of neonatal sepsis before blood culture results is standard practice. In cases where cultures remained negative, treatment continued long after blood cultures would be expected to turn positive. The mean treatment length in culture negative cases was 6.1 and 7.8 days per course for early and late onset sepsis respectively (Wagstaff et al., 2019a). Over time, the use of gentamicin to treat neonatal sepsis was increasingly replaced or augmented by cefotaxime administration. This observation was concerning since there is evidence that cefotaxime may cause increased mortality when compared to gentamicin (Clark, Bloom, Spitzer, & Gerstmann, 2006). Using multiple logistic regression, we found a similar increase in risk of mortality when neonates were exposed to cefotaxime. The risk was statistically significant even when gestational age, birth weight, hospital admission date-time, blood culture confirmation of sepsis, risk of mortality, and severity of illness were added to the model as potential confounding variables (adjusted odds ratio 2.8, p = 0.02; Wagstaff et al., 2019a).</p>
+
+<h2>References</h2>
+
+<p class="hangingindent">Reese H. Clark, Barry T. Bloom, Alan R. Spitzer, Dale R. Gerstmann. (2006). Empiric Use of Ampicillin and Cefotaxime, Compared with Ampicillin and Gentamicin, for Neonates at Risk for Sepsis is Associated with an Increased Risk of Neonatal Death. <i>Pediatrics,</i> 117(1), 67–74. (<a href="https://doi.org/10.1542/peds.2005-0179" target="_blank">text</a>)</p>
+
+<p class="hangingindent"><u>Jadon S. Wagstaff</u>, Robert J. Durrant, Michael G. Newman, Rachael Eason, Robert M. Ward, Catherine M. T. Sherwin, and Elena Y. Enioutina. (2019a). Antibiotic Treatment of Suspected and Confirmed Neonatal Sepsis within 28 Days of Birth: A Retrospective Analysis. <i>Frontiers in Pharmacology,</i> 10, 1191. (<a href="https://doi.org/10.3389/fphar.2019.01191" target="_blank">text</a>)</p>
+
+<p class="hangingindent"><u>Jadon S. Wagstaff</u>, Michael Newman, and Elena Y. Enioutina. (2019b). Empiric Treatment of Neonatal Early-Onset Sepsis: A Retrospective Analysis of the University of Utah Hospital Cases [Abstract 43]. <i>Clinical Pharmacology in Drug Development,</i> 8(S1), 30. (<a href="https://doi.org/10.1002/cpdd.724" target="_blank">text</a>, <a href="../public/data/sepsis_accp_poster2.pdf" target="_blank">poster</a>)</p>
+
+<p class="hangingindent"><u>Jadon S. Wagstaff</u>, Eason Rachael, Michael Newman, Catherine M. Sherwin, and Elena Y. Enioutina. (2018). Characterization and Treatments of Neonatal Late-Onset Sepsis: A Retrospective Analysis of the Univ of Utah Hosp Cases [Abstract 114]. <i>Clinical Pharmacology in Drug Development,</i> 7(S1), 89–90. (<a href="https://doi.org/10.1002/cpdd.610" target="_blank">text</a>, <a href="../public/data/sepsis_accp_poster.pdf" target="_blank">poster</a>)</p>
+
+
+
+</div>
+</body>
+</html>

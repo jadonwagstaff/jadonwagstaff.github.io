@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Jadon Wagstaff - Projects</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:light|Slabo+13px|Slabo+27px" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/main.css"/>
-    <!--<script type="text/javascript" src="big_data/visualization/bower_components/d3/d3.js"></script>-->
+    <link rel="stylesheet" href="../public/css/main.css"/>
 </head>
 
 <body>
@@ -61,7 +59,7 @@ to compare migration trajectories through the use of a modified version of persi
 
 <h2>Related Work</h2>
 
-<p>The current methods [2, 3] in comparing trajectories for bird migration is the following. A discrete
+<p>The current methods (Klaassen et al., 2010; Vardanis et al., 2016) in comparing trajectories for bird migration is the following. A discrete
 number of latitudes are chosen along the migration trajectories, usually less than ten. For each
 latitude, the corresponding longitude is found along each of the trajectories. The longitude values
 are then used as a metric to compare two trajectories. Statistical methods such as ANOVA can
@@ -76,8 +74,7 @@ subset of the trajectory is considered for comparison.</p>
 
 <p>To remedy these problems, a new method is proposed based on persistent homology. The
 method will calculate dimension one persistence with data from two trajectories, then the Wasserstein metric or the bottleneck metric could be used to compare trajectory pairs. To demonstrate
-the usefulness of this method, migration trajectory data for <i>Cathartes aura</i> (turkey vultures) [1]
-will be used to test the algorithm.</p>
+the usefulness of this method, migration trajectory data for <i>Cathartes aura</i> (turkey vultures) (Barber, 2017) will be used to test the algorithm.</p>
 
 <h2>Proposed Method</h2>
 
@@ -95,7 +92,7 @@ ran in n^2 time with n space.</p>
 <p>The result of this algorithm is a persistence diagram showing divergences between two trajectories.
 Prominent divergences are marked by large differences in birth and death. These persistence
 diagrams can be compared using bottleneck distance or Wasserstein distance to compare different
-pairs of trajectories. For example, consider this paper [3] which compares consistency of long
+pairs of trajectories. For example, consider this paper (Vardanis et al., 2016) which compares consistency of long
 distance bird migration between two species. The Wasserstein distance could be used to compare all
 pairs of trajectories north and all pairs of trajectories south for one species. The mean distance and
 standard deviation of these values from one species could be compared to the mean and standard
@@ -104,9 +101,9 @@ diagram would look like with a given trajectory, look at the figures below. The
 algorithm was implemented comparing the north and south migration for a year of two different
 birds.</p><br>
 
-<img class="max" src="public/images/tda_figure1.png"><br><br><br><br>
+<img class="max" src="../public/images/tda_figure1.png"><br><br><br><br>
 
-<img class="max" src="public/images/tda_figure2.png"><br><br><br><br>
+<img class="max" src="../public/images/tda_figure2.png"><br><br><br><br>
 
 <h2>Conclusion</h2>
 
@@ -118,13 +115,16 @@ the validity of using persistence diagrams as a metric. Topological techniques s
 for this type of data, and further investigation into the subject would be justified.</p>
 
 <h2>References</h2>
-[1] Barber, D. Vultures acopian center: Turkey vulture tracking data. <a href="http://www.movebank.com">http://www.movebank.com</a>. Accessed: 2017-03-15.<br>
-[2] Klaassen, R. H. G., Strandberg, R., Hake, M., Olofsson, P., Tttrup, A. P., and
-Alerstam, T. Loop migration in adult marsh harriers <i>Circus aeruginosus</i>, as revealed by
-satellite telemetry. <i>Journal of Avian Biology 41</i> (2010), 200–7.<br>
-[3] Vardanis, Y., Nilsson, J., Klaassen, R. H., Strandberg, R., and Alerstam, T.
+
+<p class="hangingindent">Barber, D. Vultures acopian center: Turkey vulture tracking data. <a href="http://www.movebank.com">http://www.movebank.com</a>. Accessed: 2017-03-15.</p>
+
+<p class="hangingindent">Klaassen, R. H. G., Strandberg, R., Hake, M., Olofsson, P., Tttrup, A. P., and
+Alerstam, T. (2010). Loop migration in adult marsh harriers <i>Circus aeruginosus</i>, as revealed by
+satellite telemetry. <i>Journal of Avian Biology,</i> 41, 200–7.</p>
+
+<p class="hangingindent">Vardanis, Y., Nilsson, J., Klaassen, R. H., Strandberg, R., and Alerstam, T. (2016).
 Consistency in long-distance bird migration: contrasting patterns in time and space for two
-raptors. <i>Animal Behaviour 113</i> (2016), 177–187.
+raptors. <i>Animal Behaviour 113</i> (2016), 177–187.</p>
 
 
 
