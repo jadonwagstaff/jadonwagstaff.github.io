@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jadon Wagstaff - Projects</title>
+    <link rel="stylesheet" href="../public/css/main.css"/>
+</head>
+
+<body>
+<div id="wrap">
+
+<div id="head">
+	<span>
+		<ul id="nav">
+			<li>
+				<a class="navItem" href="../about.html">
+					ABOUT
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../projects.html">
+					PROJECTS
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../experience.html">
+					EXPERIENCE
+				</a>
+			</li>
+			<li>
+				<a class="navItem" href="../life.html">
+					LIFE</li>
+				</a>
+			<li>
+		</ul>
+	</span>
+	<span id="symbol">
+		<a class="navItem" href="../index.html">
+			JW
+		</a>
+	</span>
+</div>
+
+<h1>National Snow Load Study</h1>
+
+<h3>JADON WAGSTAFF - June 02, 2021</h3>
+
+<h2>Overview</h2>
+
+<p>Previous ASCE snow load maps target uniform hazard loads in the form of 50-year loads (expected extreme load value observed every 50 years). The maps included large regions where a site-specific case study is required to establish the load. This project aimed to reduce the case study regions and designate design loads targeting a uniform risk i.e. reliability-targeted loads. I was extensively involved in this project, in particular I wrote a majority of the code used to collect and clean data, I helped come up with yearly maximum load distribution fitting schemes that enabled the reliable calculation of reliability-targeted loads, and I developed the high-resolution mapping technique which estimated loads between measurement locations. The details of the project are available in Bean et al. 2021. My contributions are mainly described in chapters 4, 6, and 7. Resulting maps will be included in ASCE 7-22 <a href="https://www.asce.org/asce-7/" target="_blank">https://www.asce.org/asce-7/</a>.</p>
+
+<img class="max" src="../public/images/snowload_legend.png">
+<center>Figure 1: Example 50-year load map generated using remap with regional generalized additive models.</center>
+
+<h2>remap</h2>
+
+<p>One of my main achievements related to this project was the conceptualization and creation of the R package remap (Wagstaff, 2021a; Wagstaff, 2021b). Creating maps of continuous variables involves estimating values between measurement locations scattered throughout a geographic region. These maps often leverage observed similarities between geographically close measurements, but may also make predictions using other geographic information such as elevation. The relationship between the available geographic information and the variable of interest can vary with location, especially when mapping large areas like the contiguous United States. A simple way to account for the changing relationship is to divide the space into different sub-regions and model the relationship at each region. The naive implementation of this approach has the side effect of making sudden changes in predictions at the borders of each region. The remap R package implements a novel regional border smoothing method that allows for the formation of a continuous map built with regional model (Figure 2). Model accuracy is substantially improved with a variety of mapping techniques using remap over mapping with a global model.</p>
+
+<center><img width = "500px" src="../public/images/remap.png"></center>
+<center>Figure 2: With (bottom) and without (top) application of regional border smoothing where predictions are a linear combination of longitude and latitude. The gray line shows predicted values at 0.7&#176; N. Left region predicts <i>lon - lat + 1</i>, bottom region predicts <i>lat - lon + 1.4</i>, and right region predicts <i>lon - lat + 0.7</i>. Smoothing zone is 30 km (~0.27&#176;).</center>
+
+<h2>References</h2>
+
+<p class="hangingindent">Bean, B., Maguire, M., Sun, Y., <b>Wagstaff, J</b>., Al-Rubaye, S.A., Wheeler, J., Jarman, S., & Rogers, M. (2021). The 2020 National snow load study (paper 276). <i>Utah State University, Mathematics and Statistics Faculty Publications.</i> <a href="https://doi.org/10.26077/200k-pr86" target="_blank">https://doi.org/10.26077/200k-pr86</a></p>
+
+<p class="hangingindent"><b>Wagstaff, J. S.</b>. (2021a). <i>Regionalized models with spatially continuous predictions at the borders</i> (Publication No. 8065) [Master's thesis, Utah State University]. All Graduate Theses and Dissertations. <a href="https://digitalcommons.usu.edu/etd/8065/" target="_blank">https://digitalcommons.usu.edu/etd/8065/</a></p>
+
+<p class="hangingindent"><b>Wagstaff, J.</b> (2021b). remap: regional spatial modeling with continuous borders. <i>The Comprehensive R Archive Network (CRAN).</i> <a href="https://github.com/jadonwagstaff/remap" target="_blank">https://github.com/jadonwagstaff/remap</a></p>
+
+
+
+</div>
+</body>
+</html>
