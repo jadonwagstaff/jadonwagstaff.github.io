@@ -1,8 +1,8 @@
 
 
 // constants and variables
-const BG_PROP = 1.332303, BUFFER = 2;
-const NAV = ['ABOUT', 'PROJECTS', 'EXPERIENCE', 'LIFE'];
+const BG_PROP = 1.332303, BUFFER = 4;
+const NAV = ['ABOUT', 'PROFESSION', 'ARTISANSHIP'];
 
 var body = document.getElementsByTagName('body')[0];
 var container = d3.select('#container');
@@ -12,7 +12,7 @@ var container = d3.select('#container');
 var title = container.append('text')
 	.text('Jadon Wagstaff')
 	.style('cursor', 'default');
-	
+
 var nav = container.append('g');
 nav = nav.selectAll('a')
 		.data(NAV)
@@ -20,9 +20,8 @@ nav = nav.selectAll('a')
 		.append('a')
 		.attr('xlink:href', function(d,i) {
 			if( i == 0 ) { return 'about.html'; }
-			else if( i == 1 ) { return 'projects.html'; }
-			else if( i == 2 ) { return 'experience.html'; }
-			else if( i == 3 ) { return 'life.html'; }
+			else if( i == 1 ) { return 'profession.html'; }
+			else if( i == 2 ) { return 'artisanship.html'; }
 		});
 nav = nav.append('text')
 	.attr('class', 'nav')
@@ -45,12 +44,12 @@ else {
 container.attr('width', x)
 	.attr('height', (y - 5));
 
-var titleSize = Math.min(x/25, 48);	
+var titleSize = Math.min(x/16, 33);
 title.attr('x', x/2)
 	.attr('y', 3*(y/16))
 	.style('font-size', titleSize +'px');
 
-var navSize = Math.min(x/50, 24);
+var navSize = Math.min(x/26, 20);
 var navX = x/4;
 var navY = 11*(y/16);
 nav.attr('x', navX)
@@ -83,16 +82,16 @@ window.onresize = function(event) {
 		body.style.backgroundSize = ''+ y*BG_PROP +'px '+ y +'px';
 		body.style.backgroundPosition = '50% 0%';
 	}
-	
+
 	container.attr('width', x)
 		.attr('height', (y - 5));
-		
-	titleSize = Math.min(x/25, 48);
+
+	titleSize = Math.min(x/16, 33);
 	title.attr('x', x/2)
 		.attr('y', 3*(y/16))
 		.style('font-size', titleSize +'px');
-		
-	navSize = Math.min(x/50, 24);
+
+	navSize = Math.min(x/26, 20);
 	navX = x/4;
 	navY = 11*(y/16);
 	nav.attr('x', navX)
@@ -101,5 +100,3 @@ window.onresize = function(event) {
 		})
 		.style('font-size', navSize +'px');
 }
-
-	

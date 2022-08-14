@@ -4,29 +4,18 @@
 }
 #head {
 	padding-top: 40px;
-	padding-bottom: 80px;
 }
 #symbol {
 	float: right;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: lighter;
-	font-size: 27px;
-}
-#nav {
-	padding: 0;
-	margin: 0;
-	display: inline-block;
-}
-#nav li {
-	list-style-type: none;
-	display: inline;
-	padding-right: 20px;
-	text-decoration: none;
+	font-size: 21px;
 }
 a {
 	text-decoration: none;
 }
 a.navItem {
+    padding-right: 20px;
 	color: inherit;
 	text-decoration: inherit;
 	transition: color 0.2s ease;
@@ -43,13 +32,14 @@ body {
 	padding-bottom: 150px;
 }
 h1 {
-	font-size: 27px;
+  padding-top: 48px;
+	font-size: 21px;
 	font-weight: inherit;
 }
 h2 {
 	font-size: 13px;
 	font-weight: 600;
-	padding-top: 30px;
+	padding-top: 24px;
 }
 h3 {
 	font-size: 13px;
@@ -78,6 +68,14 @@ p {
   padding-left: 13pt;
   text-indent: -13pt;
 }
+
+path {
+	fill: #595959;
+}
+circle {
+	fill: #595959;
+}
+
 
 
 
