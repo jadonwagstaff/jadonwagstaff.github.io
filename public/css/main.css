@@ -4,19 +4,19 @@
 	margin: 0 auto;
 }
 #head {
-	padding-top: 40px;
+	padding-top: 30pt;
 }
 #symbol {
 	float: right;
 	font-family: 'Open Sans';
 	font-weight: lighter;
-	font-size: 21px;
+	font-size: 20pt;
 }
 a {
 	text-decoration: none;
 }
 a.navItem {
-    padding-right: 20px;
+    padding-right: 20pt;
 	color: inherit;
 	text-decoration: inherit;
 	transition: color 0.2s ease;
@@ -31,29 +31,29 @@ img.max {
 	max-width: 700px;
 }
 body {
-	font-size: 13px;
+	font-size: 12pt;
 	line-height: 200%;
-	padding-bottom: 150px;
+	padding-bottom: 100pt;
 }
 h1 {
-  padding-top: 48px;
-	font-size: 21px;
+  padding-top: 36pt;
+	font-size: 16pt;
 	font-weight: inherit;
 }
 h2 {
-	font-size: 13px;
+	font-size: 12pt;
 	font-weight: 600;
-	padding-top: 24px;
+	padding-top: 6pt;
 }
 h3 {
-	font-size: 13px;
+	font-size: 12pt;
 	font-weight: 300;
 	position: relative;
-	bottom: 15px;
+	bottom: 12pt;
 	z-index: -1;
 }
 h3.date {
-	font-size: 13px;
+	font-size: 12pt;
 	font-weight: 300;
 	position: relative;
 	margin-top: 0px;
@@ -66,7 +66,7 @@ p.noSpace {
 	margin-bottom: 5px;
 }
 p {
-	line-height: 180%
+	line-height: 150%;
 }
 .hangingindent {
   padding-left: 13pt;

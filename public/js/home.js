@@ -2,7 +2,7 @@
 
 // constants and variables
 const BG_PROP = 1.332303, BUFFER = 4;
-const NAV = ['ABOUT', 'PROFESSION', 'ARTISANSHIP'];
+const NAV = ['ABOUT', 'RESEARCH', 'DESIGN'];
 
 var body = document.getElementsByTagName('body')[0];
 var container = d3.select('#container');
@@ -20,8 +20,8 @@ nav = nav.selectAll('a')
 		.append('a')
 		.attr('xlink:href', function(d,i) {
 			if( i == 0 ) { return 'about.html'; }
-			else if( i == 1 ) { return 'profession.html'; }
-			else if( i == 2 ) { return 'artisanship.html'; }
+			else if( i == 1 ) { return 'research.html'; }
+			else if( i == 2 ) { return 'design.html'; }
 		});
 nav = nav.append('text')
 	.attr('class', 'nav')
@@ -44,19 +44,19 @@ else {
 container.attr('width', x)
 	.attr('height', (y - 5));
 
-var titleSize = Math.min(x/16, 33);
+var titleSize = Math.min(x/16, 24);
 title.attr('x', x/2)
 	.attr('y', 3*(y/16))
-	.style('font-size', titleSize +'px');
+	.style('font-size', titleSize +'pt');
 
-var navSize = Math.min(x/26, 20);
+var navSize = Math.min(x/26, 14);
 var navX = x/4;
 var navY = 11*(y/16);
 nav.attr('x', navX)
 	.attr('y', function(d,i) {
 		return (navY + i*(navSize + BUFFER))
 	})
-	.style('font-size', navSize +'px')
+	.style('font-size', navSize +'pt')
 	.on('mouseover', function(d,i) {
 		d3.select(this)
 			.transition()
