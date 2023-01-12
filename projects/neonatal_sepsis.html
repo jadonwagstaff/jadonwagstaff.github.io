@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Jadon Wagstaff - Projects</title>
     <link rel="stylesheet" href="../public/css/main.css"/>
+    <link rel="stylesheet" href="../public/css/fancybox.css"/>
 </head>
 
 <body>
@@ -43,7 +44,9 @@
 
 <p>After cleaning the data, we tested gestational age as a predictor of late-onset sepsis. Based on a logistic regression model, gestational age is a good predictor of late onset sepsis in terms of sensitivity and specificity (Figure 1 corroborates this point). Since the likelihood of sepsis is so skewed (about 5:1000 sepsis:normal) the precision of the predictor is low. This means that if the cutoff age is 33 weeks, even though 90% of newborns with late-onset sepsis would be captured, only 4% of the newborns less than 33 weeks would be positive for late-onset sepsis.</p>
 
-<img class="max" src="../public/images/research/sepsis_density.png">
+<a data-fancybox="figure" href="../public/images/research/sepsis_density.png">
+	<img class="max" src="../public/images/research/sepsis_density.png">
+</a>
 <center>Figure 1: Probability density plots for late-onset sepsis.</center>
 
 <p>We characterized the treatment, demographics, and causative agents of late onset sepsis within our patient group in an abstract and poster at the ACCP 2018 meeting (Wagstaff et al., 2018). After further analysis and data collection, we presented a second abstract and poster on the subject of empiric treatment of early onset neonatal sepsis at the ACCP 2019 meeting (Wagstaff et al., 2019a). Finally, we refined our findings into a journal article published in Frontiers in Pharmacology (Wagstaff et al., 2019b).
@@ -52,7 +55,9 @@
 
 <p>Most neonates treated for sepsis did not have a corresponding positive blood culture result. Only 2.3% of early onset sepsis patients and 20% of late onset patients had positive culture results (Wagstaff et al., 2019b). Empiric treatment of neonatal sepsis before blood culture results is standard practice. In cases where cultures remained negative, treatment continued long after blood cultures would be expected to turn positive. The mean treatment length in culture negative cases was 6.1 and 7.8 days per course for early and late onset sepsis respectively (Wagstaff et al., 2019b). Over time, the use of gentamicin to treat neonatal sepsis was increasingly replaced or augmented by cefotaxime administration. This observation was concerning since there is evidence that cefotaxime may cause increased mortality when compared to gentamicin (Clark et al., 2006). Using multiple logistic regression, we found a similar increase in risk of mortality when neonates were exposed to cefotaxime. The risk was statistically significant even when gestational age, birth weight, hospital admission date-time, blood culture confirmation of sepsis, risk of mortality, and severity of illness were added to the model as potential confounding variables (adjusted odds ratio 2.8, p = 0.02; Figure 2; Wagstaff et al., 2019a; Wagstaff et al., 2019b).</p>
 
-<img class="max" src="../public/images/research/sepsis.png">
+<center><a data-fancybox="figure" href="../public/images/research/sepsis.png">
+	<img class="max" src="../public/images/research/sepsis.png">
+</a></center>
 <center>Figure 2: Mortality rate compared between neonates receiving and not receiving cefotaxime as part of empiric therapy. Un-circled graphs contain potential confounding variables controlled for in the multiple logistic regression model. </center>
 
 <h2>References</h2>
@@ -70,5 +75,6 @@
 
 
 </div>
+<script src="../public/js/fancybox.js"></script>
 </body>
 </html>

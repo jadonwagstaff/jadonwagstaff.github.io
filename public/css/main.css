@@ -7,9 +7,8 @@
 }
 #symbol {
 	float: right;
-	font-family: sans-serif;
 	font-weight: lighter;
-	font-size: 20pt;
+	font-size: 16pt;
 }
 a {
 	text-decoration: none;
@@ -66,10 +65,6 @@ p.noSpace {
 }
 p {
 	line-height: 150%;
-}
-.hangingindent {
-  padding-left: 13pt;
-  text-indent: -13pt;
 }
 
 path {

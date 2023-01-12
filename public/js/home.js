@@ -44,10 +44,9 @@ else {
 container.attr('width', x)
 	.attr('height', (y - 5));
 
-var titleSize = Math.min(x/16, 24);
 title.attr('x', x/2)
 	.attr('y', 3*(y/16))
-	.style('font-size', titleSize +'pt');
+	.style('font-size', 24 +'pt');
 
 var navSize = Math.min(x/26, 14);
 var navX = x/4;
@@ -56,7 +55,7 @@ nav.attr('x', navX)
 	.attr('y', function(d,i) {
 		return (navY + i*(navSize + BUFFER))
 	})
-	.style('font-size', navSize +'pt')
+	.style('font-size', 16 +'pt')
 	.on('mouseover', function(d,i) {
 		d3.select(this)
 			.transition()
@@ -86,17 +85,16 @@ window.onresize = function(event) {
 	container.attr('width', x)
 		.attr('height', (y - 5));
 
-	titleSize = 36;
 	title.attr('x', x/2)
 		.attr('y', 3*(y/16))
-		.style('font-size', titleSize +'px');
+		.style('font-size', 24 +'px');
 
-	navSize = 24;
+	navSize = Math.min(x/26, 16);
 	navX = x/4;
 	navY = 11*(y/16);
 	nav.attr('x', navX)
 		.attr('y', function(d,i) {
 			return (navY + i*(navSize + BUFFER))
 		})
-		.style('font-size', navSize +'px');
+		.style('font-size', 16 +'px');
 }
