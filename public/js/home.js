@@ -86,12 +86,12 @@ window.onresize = function(event) {
 	container.attr('width', x)
 		.attr('height', (y - 5));
 
-	titleSize = Math.min(x/16, 33);
+	titleSize = 36;
 	title.attr('x', x/2)
 		.attr('y', 3*(y/16))
 		.style('font-size', titleSize +'px');
 
-	navSize = Math.min(x/26, 20);
+	navSize = 24;
 	navX = x/4;
 	navY = 11*(y/16);
 	nav.attr('x', navX)
