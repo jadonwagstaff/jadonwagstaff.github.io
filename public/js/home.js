@@ -1,7 +1,7 @@
 
 
 // constants and variables
-const BG_PROP = 1.332303, BUFFER = 4;
+const BG_PROP = 1.332303, BUFFER = 6;
 const NAV = ['ABOUT', 'RESEARCH', 'DESIGN'];
 
 var body = document.getElementsByTagName('body')[0];
@@ -46,7 +46,7 @@ container.attr('width', x)
 
 title.attr('x', x/2)
 	.attr('y', 3*(y/16))
-	.style('font-size', 24 +'pt');
+	.style('font-size', 18 +'pt');
 
 var navSize = Math.min(x/26, 14);
 var navX = x/4;
@@ -55,7 +55,7 @@ nav.attr('x', navX)
 	.attr('y', function(d,i) {
 		return (navY + i*(navSize + BUFFER))
 	})
-	.style('font-size', 16 +'pt')
+	.style('font-size', 12 +'pt')
 	.on('mouseover', function(d,i) {
 		d3.select(this)
 			.transition()
@@ -87,14 +87,14 @@ window.onresize = function(event) {
 
 	title.attr('x', x/2)
 		.attr('y', 3*(y/16))
-		.style('font-size', 24 +'px');
+		.style('font-size', 18 +'pt');
 
 	navSize = Math.min(x/26, 16);
 	navX = x/4;
 	navY = 11*(y/16);
 	nav.attr('x', navX)
 		.attr('y', function(d,i) {
-			return (navY + i*(navSize + BUFFER))
+			return (navY + i*(navSize + BUFFER-2))
 		})
-		.style('font-size', 16 +'px');
+		.style('font-size', 12 +'pt');
 }
