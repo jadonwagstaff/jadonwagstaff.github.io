@@ -6,15 +6,20 @@
 	padding-top: 30pt;
 }
 #symbol {
-	float: right;
-	font-weight: lighter;
 	font-size: 16pt;
+	border:1pt solid black;
+	color: inherit;
+	padding:3pt;
+	padding-top:5pt;
+	text-decoration: inherit;
 }
 a {
 	text-decoration: none;
 }
 a.navItem {
-    padding-right: 20pt;
+	border-bottom: 1pt solid black;
+	padding-bottom: 4pt;
+    padding-right: 100px;
 	color: inherit;
 	text-decoration: inherit;
 	transition: color 0.2s ease;
